@@ -1,11 +1,11 @@
-cpp-vim
+badwolf
 neobundle.vim
 neosnippet
 neosnippet-snippets
 nyan-modoki.vim
 syntastic
-vim-python-pep8-indent
-vim-virtualenv
+unite.vim
+vesting
 vimproc
 vimshell
 vimshell-kawaii.vim

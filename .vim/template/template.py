@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/Users/aoki/anaconda/bin python
 # coding : utf-8
 ###########################
-#author:   yuya aoki
+# Author: Yuya Aoki
 #
 ###########################
 

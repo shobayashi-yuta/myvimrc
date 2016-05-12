@@ -5,8 +5,6 @@ setlocal shiftwidth=4
 setlocal noexpandtab
 setlocal matchpairs+=<:>
 
-
-
 setlocal path+=.,/usr/incbude./usr/local/include,/usr/lib/c++/v1
 
 if has('vim_starting')
