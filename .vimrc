@@ -50,7 +50,14 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {
+            \ 'build' : {
+            \ 'windows' : 'make -f make_mingw32.mak',
+            \ 'cygwin' : 'make -f make_cygwin.mak',
+            \ 'mac' : 'make -f make_mac.mak',
+            \ 'unix' : 'make -f make_unix.mak',
+            \ },
+            \ }
 NeoBundle 'supermomonga/vimshell-kawaii.vim'
 NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'SHougo/neocomplete'
