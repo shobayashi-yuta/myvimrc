@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/aokiyuya/myvimrc.svg?branch=master)](https://travis-ci.org/aokiyuya/myvimrc)
 
 ## インストールに必要なもの
-curl git vim-gnomei の三つ
+curl git vim-gnome の三つ
 
 ## how to install
 
