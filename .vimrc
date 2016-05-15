@@ -73,25 +73,10 @@ call neobundle#end()
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+silent NeoBundleInstall
 
 " Required:
 filetype plugin indent on
-"au BufRead,BufNewFile * if &ft=='python' |runtime! ~/.vim//userautoload/python.vim |endif
-" runtime! userautoload/python.vim
-"execute pathogen#infect()
-
-
-
-"let g:noecomplete#enable_at_startup = 1
-"let g:neocomplete#enable_ignore_case = 1
-"let g:noecomplete#enable_smart_case = 1
-"if !exists('g:neocomplete#keyword_patterns')
-"	let g:neocomplete#keyword_patterns = {}
-"endif
-"let g:neocomplete#keyword_patterns._= '\h\w*'
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<s-TAB>"
-
 
 
 "下の猫がうっとおしかったらこことNeoBundleの部分を消してください
