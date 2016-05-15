@@ -13,7 +13,7 @@ curl git vim-gnomei の三つ
 
 > ~~sh first_pull.sh~~
 
-で，vimが開くのでそこで:NeoBundleInstall
+~~で，vimが開くのでそこで:NeoBundleInstall~~
 
 ~~silent NeoBundleInstallって書けば解決という声も~~
 
