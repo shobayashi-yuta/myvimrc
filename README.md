@@ -6,6 +6,7 @@
 curl git vim-gnome
 
 ## how to install
+
 > git clone https://github.com/aokiyuya/myvimrc
 > cd myvimrc
 > sh first_pull.sh
