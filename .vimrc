@@ -24,6 +24,16 @@ autocmd BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 
 nmap	<Leader>f [unite]
 
+" OSの判定
+if has('win32')
+	let ostype = "Win"
+elseif has('mac')
+	let ostype = "Mac"
+else
+	let ostype = system("uname")
+endif
+
+
 " put esc-key for delete highlight
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
