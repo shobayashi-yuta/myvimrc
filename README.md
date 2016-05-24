@@ -11,13 +11,10 @@ curl git vim-gnome の三つ
 
 > cd myvimrc
 
-> ~~sh first_pull.sh~~
+> sh first_pull.sh
 
-~~で，vimが開くのでそこで:NeoBundleInstall~~
+しばらくまつと勝手にvimが開くのでy押してエンター
 
-~~silent NeoBundleInstallって書けば解決という声も~~
-
-書きました
 
 ## 諸注意
 
@@ -25,5 +22,10 @@ curl git vim-gnome の三つ
 
 色々至らない部分も多いのでPullRequest待ってます
 
+## 補足
+
+c言語補完をするなら
+
+> sudo apt-get install clang-3.5 clang-format-3.5
 
 
