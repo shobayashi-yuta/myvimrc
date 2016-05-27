@@ -22,7 +22,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'justmao945/vim-clang'
-NeoBundle 'neocomplete.vim'
+NeoBundle 'Shougo/neocomplete.vim'
 
 if !ostype == "Darwin"
 	echo ostype
