@@ -19,10 +19,11 @@ set tabstop=4
 
 set runtimepath+=~/.vim/
 
+let mapleader = ","
 autocmd BufNewFile *.py 0r $HOME/.vim/template/template.py
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 
-nmap	<Leader>f [unite]
+nmap	<Space>u [unite]
 
 " OSの判定
 if has('win32')

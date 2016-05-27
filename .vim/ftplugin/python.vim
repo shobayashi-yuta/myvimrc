@@ -39,7 +39,6 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'jpythonfold.vim'
 
-
 call neobundle#end()
 NeoBundleCheck
 
