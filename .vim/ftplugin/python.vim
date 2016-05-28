@@ -38,7 +38,9 @@ NeoBundle 'kevinw/pyflakes-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'jpythonfold.vim'
-
+" NeoBundle "davidhalter/jedi-vim", {
+    \ "autoload": { "filetypes": [ "python", "python3", "djangohtml"] }}
+" NeoBundle 'hynek/vim-python-pep8-indent'
 call neobundle#end()
 NeoBundleCheck
 

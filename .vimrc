@@ -75,6 +75,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'sjl/badwolf'
 " Unite vesting で簡単テスト
 NeoBundle 'Shougo/vesting'
+NeoBundle "davidhalter/jedi-vim", {
+    \ "autoload": { "filetypes": [ "python", "python3", "djangohtml"] }}
+
 
 
 call neobundle#end()
