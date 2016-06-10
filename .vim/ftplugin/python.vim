@@ -15,6 +15,7 @@ set columns=80
 set expandtab shiftwidth=4
 set softtabstop=4
 set path+=":/usr/local/Cellar/opencv/2.4.12_2/lib/python2.7/site-packages/"
+set listchars=tab:>-,extends:<,trail:-
 
 
 " <F5>で編集中のファイルを実行

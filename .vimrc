@@ -22,6 +22,8 @@ set runtimepath+=~/.vim/
 let mapleader = ","
 autocmd BufNewFile *.py 0r $HOME/.vim/template/template.py
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
+autocmd BufNewFile *.sh 0r $HOME/.vim/template/template.sh
+
 
 nmap	<Space>u [unite]
 
