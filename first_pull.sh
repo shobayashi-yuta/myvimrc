@@ -2,7 +2,7 @@
 cd ~/
 if [ "$(uname)" == 'Darwin' ]; then
 	OS='Mac'
-	sh ~/tmp/pull_vimrc.sh
+	pull_vimrc_mac.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 	OS='Linux'
 	sh pull_vimrc.sh
