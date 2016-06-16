@@ -11,14 +11,16 @@ curl git vim-gnome の三つ
 
 > cd myvimrc
 
-> sh first_pull.sh
+> sh pull_vimrc.sh
 
-しばらくまつと勝手にvimが開くのでy押してエンター
+>vim
 
 
 ## 諸注意
 
-結局windowsでの動作確認できてないです。強敵
+なんかmacvim微妙かも？
+
+今は改修中なので、元の機能すべては動いていない
 
 色々至らない部分も多いのでPullRequest待ってます
 

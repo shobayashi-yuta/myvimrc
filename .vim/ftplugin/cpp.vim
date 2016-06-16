@@ -7,37 +7,53 @@ setlocal matchpairs+=<:>
 
 setlocal path+=.,/usr/incbude,/usr/local/include,/usr/lib/c++/v1
 
+
+" Required:
+"
+"NeoBundle 'Shougo/neoinclude.vim'
+"NeoBundle 'justmao945/vim-clang'
+"NeoBundle 'Shougo/neocomplete.vim'
+"
+"if !ostype == "Darwin"
+"	echo ostype
+"	NeoBundle 'osyo-manga/vim-marching'
+"endif
+"NeoBundle 'SingleCompile'
+"NeoBundle 'vim-jp/cpp-vim',{'autoload' : {'filetypes' : 'cpp'}}
+"NeoBundle 'osyo-manga/vim-reunions'
+
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/.cpp.toml'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
 if has('vim_starting')
    if &compatible
       set nocompatible               " Be iMproved
    endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+   let &runtimepath = s:dein_repo_dir .",". &runtimepath
+endif
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
+  call dein#load_toml(s:toml_file)
+  if !ostype == "Darwin"
+	call dein#add('osyo-manga/vim-marching')
+  endif
+  call dein#add('vim-jp/cpp-vim',{
+		/ 'autoload': {'filetypes': 'cpp'}})
+  call dein#end()
+  call dein#save_state()
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/neoinclude.vim'
-NeoBundle 'justmao945/vim-clang'
-NeoBundle 'Shougo/neocomplete.vim'
-
-if !ostype == "Darwin"
-	echo ostype
-	NeoBundle 'osyo-manga/vim-marching'
+if has('vim_starting') && dein#check_install()
+  call dein#install()
 endif
-NeoBundle 'SingleCompile'
-NeoBundle 'vim-jp/cpp-vim',{'autoload' : {'filetypes' : 'cpp'}}
-NeoBundle 'osyo-manga/vim-reunions'
 
-call neobundle#end()
-NeoBundleCheck
+" end of dein code
 
 
 
-
+"
 " 'Shougo/neocomplete.vim' {{{
 let g:neocomplete#enable_at_startup = 1
 if !exists('g:neocomplete#force_omni_input_patterns')
