@@ -22,28 +22,31 @@ set listchars=tab:>-,extends:<,trail:-
 " MATLABと同じショートカット
 nmap <F5> :!python %
 
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/.python.toml'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if has('vim_starting')
    if &compatible
       set nocompatible               " Be iMproved
    endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+   let &runtimepath = s:dein_repo_dir .",". &runtimepath
+endif
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
+  call dein#load_toml(s:toml_file)
+  call dein#add('davidhalter/jedi-vim', {
+			\ 'autoload': {'filetypes': ['python', 'python3', 'djangohtml']}})
+  call dein#end()
+  call dein#save_state()
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'kevinw/pyflakes-vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'hdima/python-syntax'
-NeoBundle 'jpythonfold.vim'
-" NeoBundle "davidhalter/jedi-vim", {
-    \ "autoload": { "filetypes": [ "python", "python3", "djangohtml"] }}
-" NeoBundle 'hynek/vim-python-pep8-indent'
-call neobundle#end()
-NeoBundleCheck
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+
+" end of dein code
 
 let python_highlight_all = 1
 
@@ -99,6 +102,7 @@ nnoremap <S-f> :call Autopep8()<CR>
 
 function! Python_fold_on()
 	let s:python_fold_path = ':source ' . g:my_dot_files . '/bundle/jpythonfold.vim/syntax/jpythonfold.vim'
+	let s:python_fold_path = ':source ~/anaconda/bin/python'
 	execute s:python_fold_path
 endfunction
 
@@ -111,46 +115,39 @@ elseif python_major_version == 3 && has('python3')
     python3 None
 endif
 
-if ! empty(neobundle#get("jedi-vim"))
-  
-  let g:jedi#auto_initialization = 1
-  let g:jedi#auto_vim_configuration = 1
 
-  nnoremap [jedi] <Nop>
-  xnoremap [jedi] <Nop>
-  nmap <Leader>j [jedi]
-  xmap <Leader>j [jedi]
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 1
 
-  let g:jedi#completions_command = "<C-Space>"    " 補完キーの設定この場合はCtrl+Space
-  let g:jedi#goto_assignments_command = "<C-g>"   " 変数の宣言場所へジャンプ（Ctrl + g)
-  let g:jedi#goto_definitions_command = "<C-d>"   " クラス、関数定義にジャンプ（Gtrl + d）
-  let g:jedi#documentation_command = "<C-k>"      " Pydocを表示（Ctrl + k）
-  let g:jedi#rename_command = "[jedi]r"
-  let g:jedi#usages_command = "[jedi]n"
-  let g:jedi#popup_select_first = 0
-  let g:jedi#popup_on_dot = 0
+nnoremap [jedi] <Nop>
+xnoremap [jedi] <Nop>
+nmap <Leader>j [jedi]
+xmap <Leader>j [jedi]
 
-  autocmd FileType python setlocal completeopt-=preview
+let g:jedi#completions_command = "<C-Space>"    " 補完キーの設定この場合はCtrl+Space
+let g:jedi#goto_assignments_command = "<C-g>"   " 変数の宣言場所へジャンプ（Ctrl + g)
+let g:jedi#goto_definitions_command = "<C-d>"   " クラス、関数定義にジャンプ（Gtrl + d）
+let g:jedi#documentation_command = "<C-k>"      " Pydocを表示（Ctrl + k）
+let g:jedi#rename_command = "[jedi]r"
+let g:jedi#usages_command = "[jedi]n"
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
 
+autocmd FileType python setlocal completeopt-=preview
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
 endif
 
-
-  if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
-  endif
-  let g:neocomplete#force_omni_input_patterns.cpp =
+let g:neocomplete#force_omni_input_patterns.cpp =
       \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
 
-
-
-  " for w/ neocomplete
-    if ! empty(neobundle#get("neocomplete.vim"))
-        autocmd FileType python setlocal omnifunc=jedi#completions
-        let g:jedi#completions_enabled = 0
-        let g:jedi#auto_vim_configuration = 0
-        let g:neocomplete#force_omni_input_patterns.python =
-                        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-    endif
+" for w/ neocomplete
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:neocomplete#force_omni_input_patterns.python =
+  \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 
