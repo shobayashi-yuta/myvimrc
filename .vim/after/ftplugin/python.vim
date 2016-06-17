@@ -23,7 +23,7 @@ nmap <F5> :!python %
 
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
-let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/.python.toml'
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/python.toml'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if has('vim_starting')
