@@ -48,7 +48,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" dein settings {{{
+" dein settings -----------------------------------------------------
 " dein自体の自動インストール
 let s:dein_enabled = 1
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
@@ -85,7 +85,6 @@ endif
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
-" }}}
 
 
 if s:dein_enabled && dein#tap("unite.vim")
@@ -142,4 +141,8 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() :"\<Space>"
 
 
 
-
+" NORMALモードのカーソル移動中に頻繁に切り替わるとうざいのでデフォは無効化しておく(helpは例外)
+let g:precious_enable_switch_CursorMoved = { '*': 0, 'help': 1 }
+" INSERTモードのON／OFFに合わせてトグル
+autocmd MyAutoCmd InsertEnter * :PreciousSwitch
+autocmd MyAutoCmd InsertLeave * :PreciousReset
