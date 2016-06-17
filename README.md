@@ -13,7 +13,7 @@ curl git vim-gnome の三つ
 
 > sh pull_vimrc.sh
 
->vim
+> vim
 
 
 ## 諸注意
@@ -23,6 +23,15 @@ curl git vim-gnome の三つ
 とりあえずいろんなプラグインを追加していくつもり
 
 色々至らない部分も多いのでPullRequest待ってます
+
+jedi-vimを使うために、
+
+> cd ~/.cache/dein/repos/github.com/davidhalter/jedi-vim
+
+> git submodule update --init
+
+しなければならないっぽい
+
 
 ## 補足
 
