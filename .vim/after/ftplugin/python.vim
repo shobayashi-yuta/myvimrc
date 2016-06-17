@@ -35,8 +35,6 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
   call dein#load_toml(s:toml_file)
-  call dein#add('davidhalter/jedi-vim', {
-			\ 'autoload': {'filetypes': ['python', 'python3', 'djangohtml']}})
   call dein#end()
   call dein#save_state()
 endif
@@ -138,4 +136,18 @@ let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:neocomplete#force_omni_input_patterns.python =
   \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+
+
+" ---------- jedi.vim設定 ----------
+ " neocompleteと連携
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^.
+\t]\.\w*'
+" docstring非表示
+autocmd Filetype python setlocal completeopt-=preview
 
