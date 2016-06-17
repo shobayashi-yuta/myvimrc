@@ -53,12 +53,6 @@ depends = ['Shougo/context_filetype.vim']
 repo = 'Shougo/context_filetype.vim'
 
 [[plugin]]
-repo = 'mattn/emoji-vim'
-
-[[plugin]]
-repo = 'junegunn/vim-emoji'
-
-[[plugin]]
 repo = 'rhysd/github-complete.vim'
 
 [[plugins]] # toml syntax
