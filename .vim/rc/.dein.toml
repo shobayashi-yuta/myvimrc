@@ -96,4 +96,3 @@ repo =  'Shougo/vesting'
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
 
-

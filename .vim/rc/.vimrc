@@ -86,20 +86,19 @@ if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
-
 if s:dein_enabled && dein#tap("unite.vim")
   nnoremap [unite] <Nop>
   nmap <Leader>u [unite]
   nnoremap <silent> [unite]b :Unite buffer<CR>
 endif
 
+"End dein Scripts-------------------------
+
 " 引数なしでvimを開くとNERDTreeを起動
 let file_name = expand('%')
 if has('vim_starting') &&  file_name == ''
   autocmd VimEnter * NERDTree ./
 endif
-
-"End dein Scripts-------------------------
 
 syntax on
 highlight Normal ctermbg=none
@@ -139,10 +138,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>.
 inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() :"\<Space>"
 
-
-
-" NORMALモードのカーソル移動中に頻繁に切り替わるとうざいのでデフォは無効化しておく(helpは例外)
 let g:precious_enable_switch_CursorMoved = { '*': 0, 'help': 1 }
-" INSERTモードのON／OFFに合わせてトグル
 autocmd MyAutoCmd InsertEnter * :PreciousSwitch
 autocmd MyAutoCmd InsertLeave * :PreciousReset
