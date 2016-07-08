@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -r
 trap 'echo err' ERR
