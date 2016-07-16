@@ -39,4 +39,6 @@ c言語補完をするなら
 
 > sudo apt-get install clang-3.5 clang-format-3.5
 
+## 余談
 
+jedi使うためにpip install jediしないとダメって聞いた(要確認)
