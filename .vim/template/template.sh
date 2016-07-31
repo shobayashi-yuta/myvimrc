@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
-set -r
 trap 'echo err' ERR
 
 
