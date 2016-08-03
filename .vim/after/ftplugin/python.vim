@@ -112,7 +112,7 @@ xnoremap [jedi] <Nop>
 nmap <Leader>j [jedi]
 xmap <Leader>j [jedi]
 
-let g:jedi#completions_command = "<C-Space>"    " 補完キーの設定この場合はCtrl+Space
+let g:jedi#completions_command = "<C-s>"    " 補完キーの設定この場合はCtrl+Space
 let g:jedi#goto_assignments_command = "<C-g>"   " 変数の宣言場所へジャンプ（Ctrl + g)
 let g:jedi#goto_definitions_command = "<C-d>"   " クラス、関数定義にジャンプ（Gtrl + d）
 let g:jedi#documentation_command = "<C-k>"      " Pydocを表示（Ctrl + k）

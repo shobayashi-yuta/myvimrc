@@ -41,4 +41,4 @@ c言語補完をするなら
 
 ## 余談
 
-jedi使うためにpip install jediしないとダメって聞いた(要確認)
+jedi使うためにpip install jediしないとダメ

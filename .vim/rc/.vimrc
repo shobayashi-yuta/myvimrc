@@ -59,13 +59,14 @@ endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
 let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/.dein.toml'
+
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
     call dein#load_toml(s:toml_file)
-    call dein#add('Shougo/unite.vim', {
-        \ 'depends': ['vimproc'],
-        \ 'on_cmd': ['Unite'],
-        \ 'lazy': 1})
+"    call dein#add('Shougo/unite.vim', {
+"        \ 'depends': ['vimproc'],
+"        \ 'on_cmd': ['Unite'],
+"        \ 'lazy': 1})
     if has('lua')
       call dein#add('Shougo/neocomplete.vim', {
             \ 'on_i': 1,
@@ -80,6 +81,14 @@ if dein#load_state(s:dein_dir)
   call dein#end()
   call dein#save_state()
 endif
+
+" vimprocだけは最初にインストールしてほしい
+if dein#check_install(['vimproc'])
+  call dein#install(['vimproc'])
+endif
+
+
+
 " 不足プラグインの自動インストール
 if has('vim_starting') && dein#check_install()
   call dein#install()
