@@ -1,5 +1,5 @@
 " my vim settings
-" Author: yuya aoki
+" Author: yuta shobayashi
 "	and Fujie lab members
 
 set number
@@ -18,11 +18,14 @@ set backspace=indent,eol,start
 set tabstop=4
 
 set runtimepath+=~/.vim/:~/.vim/ftplugin/
-
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 let mapleader = ","
 autocmd BufNewFile *.py 0r $HOME/.vim/template/template.py
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/template.cpp
 autocmd BufNewFile *.sh 0r $HOME/.vim/template/template.sh
+autocmd BufNewFile *.tex 0r $HOME/.vim/template/template.tex
 
 nmap	<Space>u [unite]
 
@@ -149,3 +152,23 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() :"\<Space>"
 let g:precious_enable_switch_CursorMoved = { '*': 0, 'help': 1 }
 autocmd MyAutoCmd InsertEnter * :PreciousSwitch
 autocmd MyAutoCmd InsertLeave * :PreciousReset
+
+""
+"" quickrun
+""
+set visualbell
+set vb t_vb=
+autocmd FileType plaintex setlocal filetype=tex
+
+if has("vim-quickrun")
+  autocmd MyAutoCmd BufWritePost *.tex call quickrun#run() 
+endif
+let g:quickrun_config = {}
+let g:quickrun_config.tex = {
+            \ 'command' : 'latexmk',
+			\ 'cmdopt' : '-pvc',
+			\ 'outputter/error/error' : 'quickfix',
+			\ "runner" : "vimproc",
+			\ "runner/vimproc/updatetime" : 40,
+            \ 'exec'      : '%c %o %s', 
+           \ }

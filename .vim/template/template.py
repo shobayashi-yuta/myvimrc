@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 ###########################
-# Author: Yuya Aoki
+# Author: Yuta SHOBAYASHI
 #
 ###########################
 
